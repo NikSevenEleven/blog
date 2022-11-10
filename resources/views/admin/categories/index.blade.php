@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">Category</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,14 +24,65 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-1">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-block btn-primary">Add</a>
-                </div>
-                <div class="col-12">
-                Category
+                <div class="col-6 ml-1">
+                    <div class="row">
+                        <div class="col-6 ml-1">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Сategory list</h3>
+
+                                    <div class="card-tools">
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">id</th>
+                                            <th class="text-center">title</th>
+                                            <th colspan="3" class="text-center">actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($categories as $category)
+                                            <tr>
+                                                <td class="text-center">{{$category->id}}</td>
+                                                <td class="text-center">{{$category->title}}</td>
+                                                <td class="text-center"><a href="{{route('admin.category.show',$category->id)}}"><i class="far fa-eye"></i></a></td>
+                                                <td class="text-center"><a class="text-success" href="{{route('admin.category.edit',$category->id)}}"><i class="fas fa-pencil-alt"></i></a></td>
+                                                <td>
+                                                    <form class="text-center" action="{{route('admin.category.delete',$category->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="border-0 bg-transparent">
+                                                            <i class="fas fa-trash text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            <div class="col-1 mb-3 ml-1">
+                <a href="{{route('admin.category.create')}}" class="btn btn-block btn-primary">Add</a>
+            </div>
         </div>
     </section>
     <!-- /.content -->

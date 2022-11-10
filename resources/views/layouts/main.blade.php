@@ -46,6 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{asset('contact.html')}}">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('main')}}">Admin_panel</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">
                     <li class="nav-item">
