@@ -10,4 +10,5 @@ class Post extends Model
     protected $table ='posts';
     protected $guarded =false;
     use HasFactory;
+
 }
