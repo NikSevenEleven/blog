@@ -37,10 +37,10 @@
                 </div>
                 <div class="form-group" >
                         <textarea id="summernote" name="content">{{old('content')}}</textarea>
+                    @error('content')
+                    <div class="text-danger col-12">{{$message}}</div>
+                    @enderror
                 </div>
-                @error('content')
-                <div class="text-danger col-12">{{$message}}</div>
-                @enderror
                 <div class="form-group w-50">
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
@@ -80,6 +80,9 @@
                         >{{$category->title}}</option>
                         @endforeach
                     </select>
+                    @error('category_id')
+                    <div class="text-danger col-12">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Tags</label>
@@ -88,11 +91,15 @@
                         <option {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'selected' : '' }} value="{{$tag->id}}">{{$tag->title}}</option>
                         @endforeach
                     </select>
+                    @error('tag_ids')
+                    <div class="text-danger col-12">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group" >
                     <input type="submit" class="btn btn-primary" value="Add">
                     <a href="{{route('admin.post.index')}}" class="btn btn-success">Back</a>
                 </div>
+
             </form>
             </div>
         </div>

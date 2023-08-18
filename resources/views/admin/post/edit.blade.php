@@ -42,10 +42,10 @@
                     </div>
                     <div class="form-group" >
                         <textarea id="summernote" name="content">{{$post->content}}</textarea>
+                        @error('content')
+                        <div class="text-danger col-12">{{$message}}</div>
+                        @enderror
                     </div>
-                    @error('content')
-                    <div class="text-danger col-12">{{$message}}</div>
-                    @enderror
                     <div class="form-group w-50">
                         <label for="exampleInputFile">File input</label>
                         <div class="w-50 mb-2">
@@ -59,11 +59,11 @@
                             <div class="input-group-append">
                                 <span class="input-group-text">Upload</span>
                             </div>
-                        </div>
+                        </div
+                        @error('preview_image')
+                        <div class="text-danger col-12">{{$message}}</div>
+                        @enderror
                     </div>
-                    @error('preview_image')
-                    <div class="text-danger col-12">{{$message}}</div>
-                    @enderror
                     <div class="form-group w-50">
                         <label for="exampleInputFile">File general input</label>
                         <div class="w-50 mb-2">
@@ -78,10 +78,10 @@
                                 <span class="input-group-text">Upload</span>
                             </div>
                         </div>
+                        @error('main_image')
+                        <div class="text-danger col-12">{{$message}}</div>
+                        @enderror
                     </div>
-                    @error('main_image')
-                    <div class="text-danger col-12">{{$message}}</div>
-                    @enderror
                     <div class="form-group w-50">
                         <label>Choose category</label>
                         <select class="form-control" name="category_id">
@@ -90,6 +90,9 @@
                                     {{$category->id == $post->category_id ? 'selected' : '' }}
                                 >{{$category->title}}</option>
                             @endforeach
+                                @error('category_id')
+                                <div class="text-danger col-12">{{$message}}</div>
+                                @enderror
                         </select>
                     </div>
                     <div class="form-group">
@@ -99,6 +102,9 @@
                                 <option {{is_array($post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : '' }} value="{{$tag->id}}">{{$tag->title}}</option>
                             @endforeach
                         </select>
+                        @error('tag_ids')
+                        <div class="text-danger col-12">{{$message}}</div>
+                        @enderror
                     </div>
                     <div class="form-group" >
                         <input type="submit" class="btn btn-primary" value="Update">

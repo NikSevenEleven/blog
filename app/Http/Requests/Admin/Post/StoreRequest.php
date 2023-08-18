@@ -31,4 +31,13 @@ class StoreRequest extends FormRequest
             'tag_ids.*' =>'nullable|integer|exists:tags,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            // здесь делаются сообщения для определенных ключей.
+            'title.required'=>'required',
+            'title.string'=>'string',
+        ];
+    }
 }
