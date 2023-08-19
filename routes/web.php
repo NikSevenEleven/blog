@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',\App\Http\Controllers\Main\IndexController::class);
-
+Route::group(['middleware'=>['auth','admin']], function () {
 Route::group(['prefix'=>'admin'], function () {
     Route::get('/',\App\Http\Controllers\Admin\Main\IndexController::class)->name('admin.main.index');
 });
@@ -56,6 +56,7 @@ Route::group(['prefix'=>'admin/users'], function () {
     Route::get('/{user}/edit', \App\Http\Controllers\Admin\User\EditController::class)->name('admin.user.edit');
     Route::patch('/{user}', \App\Http\Controllers\Admin\User\UpdateController::class)->name('admin.user.update');
     Route::delete('/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('admin.user.delete');
+});
 });
 Auth::routes();
 
