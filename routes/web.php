@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',\App\Http\Controllers\Main\IndexController::class);
-Route::group(['middleware'=>['auth','admin']], function () {
+Route::group(['middleware'=>['auth','admin','verified']], function () {
 Route::group(['prefix'=>'admin'], function () {
     Route::get('/',\App\Http\Controllers\Admin\Main\IndexController::class)->name('admin.main.index');
 });
@@ -58,5 +58,5 @@ Route::group(['prefix'=>'admin/users'], function () {
     Route::delete('/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('admin.user.delete');
 });
 });
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
