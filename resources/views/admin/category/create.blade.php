@@ -10,8 +10,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Website</a></li>
+                        <<li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Main page</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Main Category</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
