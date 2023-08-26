@@ -18,7 +18,12 @@ Route::get('/',\App\Http\Controllers\Main\IndexController::class)->name('main.in
 Route::group(['prefix'=>'posts'], function () {
     Route::get('/',\App\Http\Controllers\Post\IndexController::class)->name('post.index');
     Route::get('/{post}',\App\Http\Controllers\Post\ShowController::class)->name('post.show');
+    Route::group(['prefix'=>'/{post}/comments'], function () {
+    Route::post('/',\App\Http\Controllers\Post\Comment\StoreController::class)->name('post.comment.store');
 });
+});
+
+
 Route::group(['middleware'=>['auth','admin','verified']], function () {
 Route::group(['prefix'=>'admin'], function () {
     Route::get('/',\App\Http\Controllers\Admin\Main\IndexController::class)->name('admin.main.index');
