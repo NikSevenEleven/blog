@@ -14,6 +14,7 @@ class Post extends Model
     use SoftDeletes;
 
     protected $withCount =['likedUsers'];
+    protected $with = ['category'];
 
     public function tags()
     {
