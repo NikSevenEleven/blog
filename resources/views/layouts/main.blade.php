@@ -26,6 +26,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('main.index')}}">Blog</a>
                     </li>
+
+                    <li class="nav-item">
+                            @auth()
+                                    <a class="nav-link" href="{{route('personal.main.index')}}">Personal Area</a>
+                    <li class="nav-item">
+                                    <form action="{{route('logout')}}" method="POST">
+                                        @csrf
+                                    <input class="mx-auto mt-2 mt-lg-0" type="submit" value="Back">
+                                    </form>
+                    </li>
+                            @endauth
+                            @guest()
+                                    <a class="nav-link" href="{{route('personal.main.index')}}">Enter</a>
+                            @endguest
+                    </li>
                 </ul>
             </div>
         </nav>
